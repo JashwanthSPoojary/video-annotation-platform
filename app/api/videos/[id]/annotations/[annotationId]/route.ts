@@ -33,7 +33,7 @@ export async function PATCH(
 
 export async function DELETE(
   request: Request,
-  { params }: { params: { videoId: string; annotationId: string } }
+  { params }: { params: { id: string; annotationId: string } }
 ) {
   try {
     const annotation = await prisma.annotation.delete({
