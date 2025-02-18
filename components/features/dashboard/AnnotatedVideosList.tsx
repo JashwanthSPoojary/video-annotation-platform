@@ -2,9 +2,9 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Button } from "@/components/ui/button"
 import { prisma } from "@/lib/prisma";
 import { getServerSession } from "next-auth";
-import { authOptions } from "@/app/api/auth/[...nextauth]/route";
 import { redirect } from "next/navigation";
 import AnnotationsButton from "./AnnotationsButton";
+import { authOptions } from "@/lib/auth";
 
 export default async function AnnotatedVideosList() {
 
