@@ -1,13 +1,13 @@
-import { NextResponse } from "next/server";
+import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { updateAnnotationSchema } from "@/schemas/annotation";
 
 export async function PATCH(
-  request: Request,
-  { params }: { params: { videoId: string; annotationId: string } }
+  req: NextRequest,
+  { params }: { params: { id: string; annotationId: string } }
 ) {
   try {
-    const body = await request.json();
+    const body = await req.json();
     const parsed = updateAnnotationSchema.safeParse(body);
     if (!parsed.success) {
       return NextResponse.json(
@@ -32,7 +32,7 @@ export async function PATCH(
 }
 
 export async function DELETE(
-  request: Request,
+  req: NextRequest,
   { params }: { params: { id: string; annotationId: string } }
 ) {
   try {
