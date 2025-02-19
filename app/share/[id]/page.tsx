@@ -5,7 +5,7 @@ import { prisma } from "@/lib/prisma";
 export default async function VideoPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
   const resolvedParams = await params;
   const { id } = resolvedParams;

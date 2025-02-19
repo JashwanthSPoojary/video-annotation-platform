@@ -4,7 +4,7 @@ import { createAnnotationSchema } from "@/schemas/annotation";
 
 export async function POST(
   request: Request,
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ) {
   try {
     const body = await request.json();
@@ -16,12 +16,13 @@ export async function POST(
       );
     }
     const { time, text } = parsed.data;
+    const { id } = await params;
 
     const annotation = await prisma.annotation.create({
       data: {
         time,
         text: text.trim(),
-        video: { connect: { id: params.id } },
+        video: { connect: { id: id } },
       },
     });
 

@@ -2,16 +2,9 @@ import { NextRequest, NextResponse } from "next/server";
 import { prisma } from "@/lib/prisma";
 import { updateAnnotationSchema } from "@/schemas/annotation";
 
-type Props = {
-  params: {
-    id: string;
-    annotationId: string;
-  };
-};
-
 export async function PATCH(
   request: NextRequest,
-  context: Props
+  context: { params: Promise<{ id: string; annotationId: string }> }
 ) {
   try {
     const body = await request.json();
@@ -24,8 +17,9 @@ export async function PATCH(
     }
 
     const { text } = parsed.data;
+    const { annotationId } = await context.params;
     const annotation = await prisma.annotation.update({
-      where: { id: context.params.annotationId },
+      where: { id: annotationId },
       data: { text: text.trim() },
     });
     return NextResponse.json(annotation, { status: 200 });
@@ -40,11 +34,12 @@ export async function PATCH(
 
 export async function DELETE(
   request: NextRequest,
-  context: Props
+  context: { params: Promise<{ id: string; annotationId: string }> }
 ) {
   try {
+    const { annotationId } = await context.params;
     const annotation = await prisma.annotation.delete({
-      where: { id: context.params.annotationId },
+      where: { id: annotationId },
     });
     return NextResponse.json(annotation, { status: 200 });
   } catch (error) {
