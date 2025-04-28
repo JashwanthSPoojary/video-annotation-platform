@@ -14,10 +14,10 @@ export default async function DashboardLayout({
   const user = session.user;
   return (
     <div className="h-screen w-screen flex flex-col overflow-hidden">
-        <header className="bg-gray-100 border-b">
+        <header className="border-b">
         <Navbar users={user} />
         </header>
-        <main className="flex-grow bg-gray-50">{children}</main>
+        <main className="flex-grow ">{children}</main>
     </div>
   );
 }

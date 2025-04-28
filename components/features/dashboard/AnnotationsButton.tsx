@@ -13,7 +13,7 @@ export default function AnnotationsButton({videoId}:AnnotationsButtonProps) {
 
   return (
     <Button variant="outline" onClick={handleClick}>
-      View All Annotated Videos
+      View
     </Button>
   );
 }

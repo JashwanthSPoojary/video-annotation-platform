@@ -3,7 +3,7 @@
 import { signIn } from "next-auth/react";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
-import { Github, Loader2 } from "lucide-react";
+import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 
@@ -64,18 +64,6 @@ export default function SignInPage() {
               </svg>
             )}
             Sign in with Google
-          </Button>
-          <Button
-            variant="outline"
-            onClick={() => handleSignIn("github")}
-            disabled={loadingProvider === "github"}
-          >
-            {loadingProvider === "github" ? (
-              <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-            ) : (
-              <Github className="mr-2 h-4 w-4" />
-            )}
-            Sign in with GitHub
           </Button>
         </CardContent>
         <CardFooter>

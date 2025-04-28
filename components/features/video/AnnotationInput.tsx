@@ -56,7 +56,7 @@ export function AnnotationInput({
       </div>
       {error && <p className="text-red-500 text-sm mb-2">{error}</p>}
       <Dialog open={isModalOpen} onOpenChange={setIsModalOpen}>
-        <DialogContent className="bg-white p-6 rounded-lg shadow-lg">
+        <DialogContent className="p-6 rounded-lg shadow-lg">
           <DialogHeader>
             <DialogTitle className="text-xl font-semibold">Long Annotation Editor</DialogTitle>
           </DialogHeader>

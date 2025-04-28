@@ -29,13 +29,13 @@ export default function AnnotationDisplay({
 }: AnnotationDisplayProps) {
   return (
     <Dialog open={isViewModalOpen} onOpenChange={setIsViewModalOpen}>
-      <DialogContent className="bg-white p-8 rounded-lg shadow-xl max-w-2xl">
+      <DialogContent className="p-8 rounded-lg shadow-xl max-w-2xl">
         <DialogHeader className="border-b pb-3">
-          <DialogTitle className="text-2xl font-bold text-gray-900">
+          <DialogTitle className="text-2xl font-bold">
             Full Annotation
           </DialogTitle>
         </DialogHeader>
-        <div className="mt-6 text-gray-800">
+        <div className="mt-6 ">
           <p className="whitespace-pre-line leading-relaxed">
             {viewAnnotation?.text}
           </p>
