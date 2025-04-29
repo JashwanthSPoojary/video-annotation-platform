@@ -1,17 +1,12 @@
 "use client"
-import { Button } from "@/components/ui/button"
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu"
-import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar"
-import { signOut } from "next-auth/react"
 import Link from "next/link"
-import { ModeToggle } from "./ModeToggle"
+import { Triangle } from "lucide-react"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuItem, DropdownMenuLabel, DropdownMenuSeparator, DropdownMenuTrigger } from "@/components/ui/dropdown-menu";
+import { Button } from "../ui/button";
+import { Avatar, AvatarFallback } from "../ui/avatar";
+import { ModeToggle } from "./ModeToggle";
+import { signOut } from "next-auth/react"
+
 
 type NavbarProps = {
   users: {
@@ -29,24 +24,28 @@ export function Navbar({ users }: NavbarProps) {
   };
 
   return (
-    <nav className="flex items-center justify-between p-4 bg-background border-b">
-      <div className="flex items-center space-x-4">
-        <Link href="/dashboard">
-          <h1 className="text-xl font-bold">VideoAno</h1>
-        </Link>
-      </div>
-
-      {/* Align ModeToggle and Profile to the right */}
-      <div className="flex items-center space-x-4 ml-auto">
+    <nav className="">
+      <header className="flex items-center justify-between px-4 py-2 border-b ">
+        <div className="flex items-center space-x-2">
+          <Link href="/dashboard">
+          {/* change this */}
+          
+            <Triangle className="h-5 w-5" color="orange"/>
+          </Link>
+          <span >/</span>
+          <div className="flex items-center">
+            <div className="h-5 w-5 rounded-full bg-green-500 mr-2"></div>
+            <span className="font-medium">{user.name}'s works</span>
+          </div>
+        </div>
+        <div className="flex items-center space-x-4 ml-auto">
         <ModeToggle />
 
         <DropdownMenu>
           <DropdownMenuTrigger asChild>
             <Button variant="ghost" className="relative h-8 w-8 rounded-full">
-              <Avatar className="h-8 w-8">
-                {/* Uncomment to use user image */}
-                {/* <AvatarImage src={user.image} alt={user.name} /> */}
-                <AvatarFallback>{user?.name?.charAt(0)}</AvatarFallback>
+              <Avatar className="h-8 w-8 flex items-cente">
+                <AvatarFallback className=" bg-pink-400">{user?.name?.charAt(0)}</AvatarFallback>
               </Avatar>
             </Button>
           </DropdownMenuTrigger>
@@ -62,6 +61,7 @@ export function Navbar({ users }: NavbarProps) {
           </DropdownMenuContent>
         </DropdownMenu>
       </div>
+      </header>
     </nav>
   );
 }

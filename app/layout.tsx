@@ -25,18 +25,15 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body
-        className={`${inter.variable} antialiased`}
-      >
+      <body className={`${inter.variable} antialiased`}>
         <ThemeProvider
-            attribute="class"
-            defaultTheme="root"
-            enableSystem
-            disableTransitionOnChange
-          >
-                      {children}
-          </ThemeProvider>
-        
+          attribute="class"
+          defaultTheme="root"
+          enableSystem
+          disableTransitionOnChange
+        >
+          {children}
+        </ThemeProvider>
       </body>
     </html>
   );

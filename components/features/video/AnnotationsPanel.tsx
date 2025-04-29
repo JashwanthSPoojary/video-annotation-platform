@@ -201,7 +201,7 @@ export function AnnotationsPanel({
                   <li
                     key={annotation.id}
                     className={`flex items-center gap-2 p-2 border rounded group  ${
-                      isActive ? "bg-green-100" : ""
+                      isActive ? "" : ""
                     }`}
                   >
                     <span
