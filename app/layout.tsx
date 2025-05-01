@@ -12,6 +12,11 @@ const inter = Inter({
 export const metadata: Metadata = {
   title: "VideoAno",
   description: "video annotation platform for youtube videos",
+  icons:{
+    icon:{
+      url:'/favicon.ico'
+    }
+  }
 };
 
 export default function RootLayout({
