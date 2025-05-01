@@ -73,7 +73,7 @@ export default function SignInPage() {
 
         {/* "Go back home" link */}
         <div className="mt-4 text-center">
-          <Link href="/" className="text-sm text-blue-500 hover:underline">
+          <Link href="/" className="text-sm hover:underline">
             Go back home
           </Link>
         </div>
