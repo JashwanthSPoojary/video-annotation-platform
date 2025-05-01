@@ -34,7 +34,7 @@ export function AnnotationInput({
 
   return (
     <>
-      <div className="flex gap-4 mb-4">
+      <div className="flex gap-4 mb-4 items-center justify-center">
         <Input
           placeholder="Add an annotation..."
           value={currentAnnotation}

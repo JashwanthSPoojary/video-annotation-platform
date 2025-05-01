@@ -15,11 +15,13 @@ import {
 } from "@/components/ui/card";
 import axios from "axios";
 import { createVideoSchema } from "@/schemas/annotation";
+import { Loader } from "lucide-react";
 
 export default function AddVideoPage() {
   const [videoLink, setVideoLink] = useState("");
   const [videoTitle, setVideoTitle] = useState("");
   const [error, setError] = useState("");
+  const [loading, setLoading] = useState<boolean>(false);
   const router = useRouter();
 
   const validateYouTubeLink = async (link: string): Promise<boolean> => {
@@ -35,8 +37,11 @@ export default function AddVideoPage() {
     }
   };
 
-  const handleAddVideo = async () => {    
-    const parsed = createVideoSchema.safeParse({ videoLink, videoTitle });
+  const handleAddVideo = async () => { 
+    try {
+      setLoading(true);
+      setError("");
+      const parsed = createVideoSchema.safeParse({ videoLink, videoTitle });
     if (!parsed.success) {
       const errors = parsed.error.flatten().fieldErrors;
       setError(errors.videoLink?.[0] || errors.videoTitle?.[0] || "Validation error");
@@ -59,8 +64,13 @@ export default function AddVideoPage() {
         `/video/${videoId}`
       );
     }
-    setError("");
-  };
+    } catch (error) {
+      setError("Failed to add video")
+      console.log(error);
+    }finally{
+      setLoading(false);
+    }
+    };
 
   return (
     <div className="container mx-auto p-6">
@@ -103,7 +113,7 @@ export default function AddVideoPage() {
           <Button variant="outline" onClick={() => router.push("/dashboard")}>
             Cancel
           </Button>
-          <Button onClick={handleAddVideo}>Add Video</Button>
+          <Button onClick={handleAddVideo}>{loading?<Loader className="animate-spin"/>:"Add Video"}</Button>
         </CardFooter>
       </Card>
     </div>

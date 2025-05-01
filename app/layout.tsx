@@ -2,16 +2,12 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import { ThemeProvider } from "@/components/common/ThemeProvider";
+import GlobalLoader from "@/components/common/GlobalLoader";
 
 const inter = Inter({
   variable: "--font-inter",
   subsets: ["latin"],
 });
-
-// const geistMono = Geist_Mono({
-//   variable: "--font-geist-mono",
-//   subsets: ["latin"],
-// });
 
 export const metadata: Metadata = {
   title: "VideoAno",
@@ -32,6 +28,7 @@ export default function RootLayout({
           enableSystem
           disableTransitionOnChange
         >
+          <GlobalLoader/>
           {children}
         </ThemeProvider>
       </body>

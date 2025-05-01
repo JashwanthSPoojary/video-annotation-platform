@@ -1,8 +1,6 @@
 "use client";
 
 import { signIn } from "next-auth/react";
-import { Button } from "@/components/ui/button";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
@@ -11,7 +9,7 @@ export default function SignInPage() {
   const searchParams = useSearchParams();
   const router = useRouter();
   const error = searchParams.get("error");
-  
+
   const [loadingProvider, setLoadingProvider] = useState<"google" | "github" | null>(null);
 
   const handleSignIn = async (provider: "google" | "github") => {
@@ -32,17 +30,18 @@ export default function SignInPage() {
   }, [error, router]);
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen p-4">
-      <Card className="w-full max-w-sm">
-        <CardHeader className="space-y-1 text-center">
-          <CardTitle className="text-2xl">Sign In</CardTitle>
-          <CardDescription>Choose your preferred sign-in method</CardDescription>
-        </CardHeader>
-        <CardContent className="grid gap-4">
-          <Button
-            variant="outline"
+    <div className="flex flex-col items-center justify-center p-4">
+      <div className="w-full max-w-sm bg-zinc-900 border border-zinc-800 rounded-xl shadow-lg p-6">
+        <div className="text-center mb-6">
+          <h1 className="text-2xl font-semibold mb-1">Sign In</h1>
+          <p className="text-sm text-zinc-400">Choose your preferred sign-in method</p>
+        </div>
+
+        <div className="space-y-4">
+          <button
             onClick={() => handleSignIn("google")}
             disabled={loadingProvider === "google"}
+            className="flex items-center justify-center w-full border border-zinc-700 bg-zinc-800 text-white py-2 px-4 rounded-md hover:bg-zinc-700 transition disabled:opacity-50"
           >
             {loadingProvider === "google" ? (
               <Loader2 className="mr-2 h-4 w-4 animate-spin" />
@@ -64,14 +63,13 @@ export default function SignInPage() {
               </svg>
             )}
             Sign in with Google
-          </Button>
-        </CardContent>
-        <CardFooter>
-          <p className="text-xs text-center text-gray-700">
-            You are signing in to a video annotation platform built by Jashwanth S Poojary.
-          </p>
-        </CardFooter>
-      </Card>
+          </button>
+        </div>
+
+        <div className="mt-6 text-center text-xs text-zinc-400">
+          You are signing in to a video annotation platform built by Jashwanth S Poojary.
+        </div>
+      </div>
     </div>
   );
 }

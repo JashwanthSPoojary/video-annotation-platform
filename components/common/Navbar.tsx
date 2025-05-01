@@ -32,11 +32,10 @@ export function Navbar({ users }: NavbarProps) {
           
             <Triangle className="h-5 w-5" color="orange"/>
           </Link>
-          <span >/</span>
-          <div className="flex items-center">
+          <Link href='/dashboard' className="flex items-center">
             <div className="h-5 w-5 rounded-full bg-green-500 mr-2"></div>
             <span className="font-medium">{user.name}'s works</span>
-          </div>
+          </Link>
         </div>
         <div className="flex items-center space-x-4 ml-auto">
         <ModeToggle />

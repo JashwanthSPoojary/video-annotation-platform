@@ -3,12 +3,12 @@ import { Twitter, Linkedin, Github, Mail } from "lucide-react";
 
 export default function Footer() {
   return (
-    <footer className="w-full py-12 border-t">
+    <footer className="w-full py-12 border-t border-white/10">
       <div className="container mx-auto px-4 flex flex-col items-center text-center">
         <h2 className="text-xl sm:text-2xl font-bold mb-4">VideoAno</h2>
         <p className="text-sm sm:text-base">
           Landing page was inspired by{" "}
-          <a href="https://linear.app/" className="text-blue-500">
+          <a href="https://linear.app/" className="">
             linear.app
           </a>
         </p>
@@ -16,7 +16,7 @@ export default function Footer() {
         <div className="flex items-center justify-center mt-4 text-sm sm:text-base">
           <span>Built by</span>
           <span className="inline-flex items-center justify-center rounded-full mx-1">
-            <span className="text-green-600 text-xs sm:text-sm">
+            <span className="text-xs sm:text-sm">
               Jashwanth S Poojary
             </span>
           </span>
@@ -24,7 +24,7 @@ export default function Footer() {
           <span className="ml-2 border border-black rounded-sm sm:w-24 w-30 h-5 my-2">
             <Link
               href="https://jashwanth.me"
-              className="text-blue-500 text-xs sm:text-sm"
+              className="text-xs sm:text-sm"
               target="_blank"
               rel="noopener noreferrer"
             >

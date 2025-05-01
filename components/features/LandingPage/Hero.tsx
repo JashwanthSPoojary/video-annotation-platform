@@ -17,7 +17,7 @@ const Hero = ({ onAnimationComplete }: HeroProps) => {
           <motion.h1
             initial={{ opacity: 0, filter: "blur(12px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{ delay: 1.2, duration: 1.2 }}
+            transition={{ delay: 2.2, duration: 1.2 }}
             className="text-3xl sm:text-4xl lg:text-5xl font-semibold leading-tight"
           >
             VideoAno is a purpose-built tool for video text based annotation .
@@ -39,7 +39,7 @@ const Hero = ({ onAnimationComplete }: HeroProps) => {
           <motion.div
             initial={{ opacity: 0, filter: "blur(12px)" }}
             animate={{ opacity: 1, filter: "blur(0px)" }}
-            transition={{ delay: 4, duration: 1.2 }}
+            transition={{ delay: 3.5, duration: 1.2 }}
             className="mt-6 flex flex-col sm:flex-row sm:justify-start justify-center gap-4"
           >
             <Link href="/dashboard">
@@ -54,7 +54,7 @@ const Hero = ({ onAnimationComplete }: HeroProps) => {
         <motion.div
   initial={{ opacity: 0, y: -100, scale: 1.05 }}
   animate={{ opacity: 0.9, y: 0, scale: 1 }}
-  transition={{ delay: 5.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+  transition={{ delay: 5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
   className="relative w-full sm:w-[120%] sm:-ml-[10%] lg:w-[130%] lg:-ml-[15%]"
   onAnimationComplete={onAnimationComplete}
 >
