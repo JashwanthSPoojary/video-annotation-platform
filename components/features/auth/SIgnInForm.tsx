@@ -4,6 +4,7 @@ import { signIn } from "next-auth/react";
 import { Loader2 } from "lucide-react";
 import { useEffect, useState } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import Link from "next/link"; // Importing the Link component
 
 export default function SignInPage() {
   const searchParams = useSearchParams();
@@ -68,6 +69,13 @@ export default function SignInPage() {
 
         <div className="mt-6 text-center text-xs text-zinc-400">
           You are signing in to a video annotation platform built by Jashwanth S Poojary.
+        </div>
+
+        {/* "Go back home" link */}
+        <div className="mt-4 text-center">
+          <Link href="/" className="text-sm text-blue-500 hover:underline">
+            Go back home
+          </Link>
         </div>
       </div>
     </div>
