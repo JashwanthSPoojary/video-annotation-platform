@@ -3,10 +3,14 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 
-const Hero = () => {
+interface HeroProps {
+  onAnimationComplete: () => void;
+}
+
+const Hero = ({ onAnimationComplete }: HeroProps) => {
   return (
     <section className="relative w-full overflow-hidden">
-      <div className="px-4 sm:px-8 lg:px-[270px] flex flex-col items-center sm:items-start justify-center py-20 gap-12">
+      <div className="px-4 sm:px-8 lg:px-[270px] flex flex-col items-center sm:items-start justify-center py-10 gap-12">
         {/* Text Content */}
         <div className="w-full max-w-3xl text-center sm:text-left space-y-4">
           {/* Heading */}
@@ -48,22 +52,27 @@ const Hero = () => {
 
         {/* Rotated, Cropped, Animated Image */}
         <motion.div
-          initial={{ opacity: 0, y: -100, scale: 1.05 }}
-          animate={{ opacity: 0.9, y: 0, scale: 1 }}
-          transition={{ delay: 5.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }} // custom ease for springy feel
-          className="relative w-full sm:w-[120%] sm:-ml-[10%] lg:w-[130%] lg:-ml-[15%] overflow-hidden"
-        >
-          <div className="w-[200%] sm:w-full transform rotate-[-6deg] origin-top-left">
-            <img
-              src="/dashboard.png"
-              alt="Dashboard"
-              className="w-full h-[300px] sm:h-auto object-cover object-left rounded-xl shadow-2xl mix-blend-lighten transition duration-500"
-            />
-          </div>
-        </motion.div>
+  initial={{ opacity: 0, y: -100, scale: 1.05 }}
+  animate={{ opacity: 0.9, y: 0, scale: 1 }}
+  transition={{ delay: 5.5, duration: 1.4, ease: [0.22, 1, 0.36, 1] }}
+  className="relative w-full sm:w-[120%] sm:-ml-[10%] lg:w-[130%] lg:-ml-[15%]"
+  onAnimationComplete={onAnimationComplete}
+>
+  {/* Backdrop/Border */}
+  <div className="absolute inset-0 rotate-[-6deg] origin-top-left border-4 border-landingWhite backdrop-blur-xl rounded-xl z-0 shadow-2xl" />
+
+  {/* Image on top of the backdrop */}
+  <div className="relative z-10 w-[200%] sm:w-full transform rotate-[-6deg] origin-top-left">
+    <img
+      src="/dashboard.png"
+      alt="Dashboard"
+      className="w-full h-[300px] sm:h-auto object-cover object-left rounded-xl shadow-2xl mix-blend-lighten transition duration-500"
+    />
+  </div>
+</motion.div>
       </div>
     </section>
   );
 };
 
-export default Hero;
+export default Hero
