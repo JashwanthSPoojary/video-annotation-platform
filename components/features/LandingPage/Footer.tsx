@@ -6,12 +6,6 @@ export default function Footer() {
     <footer className="w-full py-12 border-t border-white/10">
       <div className="container mx-auto px-4 flex flex-col items-center text-center">
         <h2 className="text-xl sm:text-2xl font-bold mb-4">VideoAno</h2>
-        <p className="text-sm sm:text-base">
-          Landing page was inspired by{" "}
-          <a href="https://linear.app/" className="">
-            linear.app
-          </a>
-        </p>
 
         <div className="flex items-center justify-center mt-4 text-sm sm:text-base">
           <span>Built by</span>
